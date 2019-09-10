@@ -1,25 +1,44 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <my-header/>
     <router-view/>
-    
-  <el-button type="danger">危险按钮</el-button>
   </div>
 </template>
 
 <script>
+import myHeader from "@/common/Header";
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+    myHeader
+  },
+  created(){
+    this.getScreen();
+  },
+  methods:{
+    getScreen(){
+        let clientWidth =
+        document.documentElement.clientWidth || document.body.clientHeight;
+        if(clientWidth < 768){
+          this.$store.commit("SET_MOBLIE",true)
+        }else{
+          this.$store.commit("SET_MOBLIE",false)
+        }
+    },
+    setMobile(){
+      addEventListener('resize',()=>{
+        this.getScreen();
+      })
+    }
+  },
+  mounted(){
+    this.setMobile();
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#app{
+  /* background-color: #333; */
 }
 </style>
