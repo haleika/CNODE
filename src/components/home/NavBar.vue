@@ -32,7 +32,7 @@ export default {
       selected(tabId){
           this.$router.push(({
                 name:'home',
-                params:{ tab:tabId},
+                params:{tab:tabId},
             }))
           this.$store.commit("SET_Page",tabId)
       }

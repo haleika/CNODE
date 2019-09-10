@@ -6,7 +6,7 @@
         <nav-bar/>
       </aside>
       <div class="homeList">
-        <home-list/>
+        <home-list @dataSueccess="dataSueccess"/>
       </div>
     </div>
   </div>
