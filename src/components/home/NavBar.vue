@@ -5,7 +5,7 @@
               <li
                 v-for="item in list"
                 :key="item.id"
-                :class="tab == item.id?'nav_item active':'nav_item'"
+                :class="$store.state.pageSelect == item.id?'nav_item active':'nav_item'"
                 @click="selected(item.id)"
               >
                   <i
@@ -25,17 +25,19 @@ export default {
   name: 'myNav',
   data(){
       return{
-          list:this.$store.state.navList,
-          tab:this.$route.params.tab ? this.$route.params.tab : 'all',
+          list:this.$store.state.navList
       }
   },
   methods:{
       selected(tabId){
-          this.tab = tabId
+          this.$router.push(({
+                name:'home',
+                params:{ tab:tabId},
+            }))
+          this.$store.commit("SET_Page",tabId)
       }
   },
   mounted(){
-      console.log(this.tab)
   }
 }
 </script>

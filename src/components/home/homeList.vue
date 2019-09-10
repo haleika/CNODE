@@ -1,15 +1,45 @@
 <template>
   <div class="myHomeList">
-      <home-item/>
+      <home-item :article="article"/>
   </div>
 </template>
 
 <script>
 import homeItem from "../home/homeItem"
+import { requestTopic } from '@/API/getApi';
+
 export default {
   name: 'HomeList',
   components:{
       homeItem
+  },
+  data(){
+    return{
+      article:[]
+    }
+  },
+  methods:{
+    getData(canshu){
+      //获取数据
+      requestTopic(canshu)
+        .then((res)=>{
+          this.article = res;
+        })
+    }
+  },
+  watch:{
+    '$route.params.tab'(newTab){
+      this.getData({
+        tab:newTab,
+        page:1
+      })
+    }
+  },
+  mounted(){
+    this.getData({
+        tab:this.$store.state.pageSelect,
+        page:1
+      })
   }
 }
 </script>
