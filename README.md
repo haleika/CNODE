@@ -1,21 +1,24 @@
 # cnode
 
-> A Vue.js project
+> 预览地址：https://haleika.github.io/CNODE/
+>官网地址：https://cnodejs.org/
 
-## Build Setup
+## 技术栈
 
-``` bash
-# install dependencies
-npm install
+vue + vue-cli 3 + vue-router + vuex + axios + sass + flex
 
-# serve with hot reload at localhost:8080
-npm run dev
+## 描述：
 
-# build for production with minification
-npm run build
+1、利用vue-cli3.0脚手架工具搭建项目基本配置
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+2、使用了vuex来存储公共数据
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+3、使用vue-router实现页面路由搭建和页面跳转
+
+4、采用less预处理器进行编写
+
+5、使用axios对官网提供的 api（https://cnodejs.org/api）进行Promise封装，用于请求信息
+
+6、使用flex+媒体查询进行响应式适配
+
+7、图标用阿里巴巴的iconfont字体图标
