@@ -1,11 +1,12 @@
 # cnode
 
 > 预览地址：https://haleika.github.io/CNODE/
+
 >官网地址：https://cnodejs.org/
 
 ## 技术栈
 
-vue + vue-cli 3 + vue-router + vuex + axios + sass + flex
+vue + vue-cli 3 + vue-router + vuex + axios + less + flex
 
 ## 描述：
 
