@@ -1,21 +1,27 @@
 <template>
   <div class="myHomeList">
-      <home-item :article="article" v-if="dataSueccess"/>
+      <div v-if="dataSueccess">
+        <home-item :article="article"/>
+        <page-button @changePage="changePage"/>
+      </div>
       <div v-else>拼命加载</div>
   </div>
 </template>
 
 <script>
 import homeItem from "../home/homeItem"
-import { requestTopic } from '@/API/getApi';
+import pageButton from './page'
+import { requestTopic } from '@/API/getAPI';
 export default {
   name: 'HomeList',
   components:{
-      homeItem
+    homeItem,
+    pageButton
   },
   data(){
     return{
       article:[],
+      pageIndex:1,
       dataSueccess:false
     }
   },
@@ -27,20 +33,29 @@ export default {
           this.article = res;
           this.dataSueccess = true;
         })
+    },
+    changePage(item){
+      this.pageIndex = item;
     }
   },
   watch:{
     '$route.params.tab'(newTab){
       this.getData({
         tab:newTab,
-        page:1
+        page:this.pageIndex
+      })
+    },
+    pageIndex(num){
+      this.getData({
+        tab:this.$store.state.pageSelect,
+        page:num
       })
     }
   },
   mounted(){
     this.getData({
         tab:this.$store.state.pageSelect,
-        page:1
+        page:this.pageIndex
       })
   }
 }
@@ -52,6 +67,7 @@ export default {
     border-radius: 5px;
     box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .05);
     position: relative;
+    background-color: #fff;
     @media screen and (max-width: 768px){
         margin: 0 auto;
         width: 95%;

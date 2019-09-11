@@ -2,10 +2,10 @@
   <div class="myAuthor">
       <header>作者</header>
       <section>
-          <div class="img">
+          <div class="img" @click="toAuthor(author.loginname)">
               <img :src="author.avatar_url" alt="">
           </div>
-          <div class="name">
+          <div class="name" @click="toAuthor(author.loginname)">
               昵称：{{author.loginname}}
           </div>
       </section>
@@ -33,9 +33,19 @@ export default {
       author:Object
   },
   filters:{
-        time(data){
+    time(data){
         let myData = new Date(data);
         return myData.getFullYear()+"年"+(myData.getMonth()+1)+"月";
+        }
+    },
+    methods:{
+        toAuthor(aothor){
+            this.$router.push({
+                name:"author",
+                query:{
+                    name:aothor
+                }
+            })
         }
     }
 }
@@ -46,6 +56,7 @@ export default {
     border: 1px solid #ccc;
     box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .05);
     border-radius: 10px;
+    background-color: #fff;
     header{
         font-weight: bold;
         padding:10px 5px;
@@ -66,10 +77,11 @@ export default {
         }
         .name{
             margin-left:10px;
+            &:hover{
+                color: #66ccff;
+                cursor: pointer;
+            }
         }
-    }
-    @media screen and(max-width: 768px){
-        display: none;
     }
 }
 </style>

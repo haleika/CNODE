@@ -2,7 +2,11 @@
   <div class="Reply">
       <div style="font-weight: bold;margin:10px;">最近回复</div>
       <ul>
-          <li v-for="item in reply" :key="item.id">
+          <li
+            v-for="item in reply"
+            :key="item.id"
+            @click="toPage(item.id,item.author.loginname)"
+          >
               <div class="title">{{item.title}}</div>
               <div class="last">
                 <span>最后回复时间：</span>
@@ -24,6 +28,18 @@ export default {
       let myData = new Date(data);
       return myData.getFullYear()+"年"+(myData.getMonth()+1)+"月";
     }
+  },
+  methods:{
+    toPage(ID,Author){
+        this.$router.push({
+            name:"content",
+            query:{
+                id: ID,
+                author:Author
+            }
+        })
+        window.scrollTo(0,0)
+    }
   }
 }
 </script>
@@ -34,6 +50,7 @@ export default {
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .05);
+    background-color: #fff;
     ul{
       li{
         width: 100%;

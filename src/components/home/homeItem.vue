@@ -69,6 +69,7 @@ export default {
                   author:Author
               }
           })
+        window.scrollTo(0,0)
       }
   }
 }
@@ -86,6 +87,10 @@ export default {
         margin: 5px 5px;
         padding:10px 20px;
         border-bottom: 1px solid rgb(192, 191, 191);
+        &:hover{
+            background-color: #ccc;
+            cursor: pointer;
+        }
         .left{
             display: flex;
             .img{

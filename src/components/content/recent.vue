@@ -42,6 +42,7 @@ export default {
                   author:Author
               }
           })
+        window.scrollTo(0,0)
       }
     }
 }
@@ -53,6 +54,7 @@ export default {
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .05);
+    background-color: #fff;
     .top{
         font-weight: bold;
         padding:10px 10px;

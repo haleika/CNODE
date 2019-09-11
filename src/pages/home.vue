@@ -3,10 +3,9 @@
     <div class="home_container">
       <aside>
         <nav-bar/>
-        <nav-bar/>
       </aside>
       <div class="homeList">
-        <home-list @dataSueccess="dataSueccess"/>
+        <home-list/>
       </div>
     </div>
   </div>
@@ -15,6 +14,7 @@
 <script>
 import navBar from "../components/home/NavBar"
 import homeList from "../components/home/HomeList"
+
 
 export default {
   name: 'home',
@@ -27,7 +27,7 @@ export default {
 
 <style lang="less" scoped>
 .home{
-  margin-top: 80px;
+  padding-top: 80px;
   .home_container{
     max-width: 1200px;
     margin: 0 auto;

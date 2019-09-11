@@ -1,14 +1,17 @@
 <template>
   <div class="Content">
-      <div class="Content_box">
-          <div class="Content_left">  
-            <author :author="AuthorList"/>
-            <recent :recent="AuthorList.recent_topics"/>
-            <reply :reply="AuthorList.recent_topics"/>
+      <div>
+          <div class="Content_box" v-if="show1&&show2">
+            <div class="Content_left">  
+                <author :author="AuthorList"/>
+                <recent :recent="AuthorList.recent_topics"/>
+                <reply :reply="AuthorList.recent_topics"/>
+            </div>
+            <div class="Content_right">
+                <content-list :Article="Article"/>
+            </div>
           </div>
-          <div class="Content_right">
-              <contentList/>
-          </div>
+          <div class="Content_box" v-else>拼命加载</div>
       </div>
   </div>
 </template>
@@ -26,7 +29,9 @@ export default {
   data(){
       return{
           AuthorList:{},
-          Article:{}
+          Article:{},
+          show1:false,
+          show2:false
       }
   },
   components:{
@@ -41,6 +46,7 @@ export default {
             .then(res=>{
                 // console.log(res)
                 this.Article = res;
+                this.show1=true
             })
       },
       getAuthor(){
@@ -48,6 +54,7 @@ export default {
             .then(res=>{
                 // console.log(res)
                 this.AuthorList = res;
+                this.show2=true
             })
       }
   },
@@ -66,7 +73,7 @@ export default {
 
 <style lang="less" scoped>
 .Content{
-    margin-top: 80px;
+    padding-top: 80px;
     .Content_box{
         max-width: 1200px;
         margin: 0 auto;
@@ -74,9 +81,14 @@ export default {
         justify-content: space-between;
         .Content_left{
             width: 20%;
+            margin-right: 20px;
             @media screen and(max-width:768px){
                 display: none;
             }
+        }
+        .Content_right{
+            width: 95%;
+            margin: 0 auto;
         }
     }
 }

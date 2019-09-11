@@ -35,9 +35,18 @@ export default {
                 params:{tab:tabId},
             }))
           this.$store.commit("SET_Page",tabId)
+      },
+      getUrl(newUrl){
+        this.$store.commit("SET_Page",newUrl.tab)
       }
   },
-  mounted(){
+  watch:{
+      "$route.params"(newUrl){
+          this.getUrl(newUrl)
+      }
+  },
+  created(){
+      this.getUrl(this.$route.params)
   }
 }
 </script>
@@ -52,6 +61,9 @@ export default {
         width: 80%;
         font-weight: bold;
         border-radius: 5px;
+        &:hover{
+            cursor: pointer;
+        }
     }
     .active{
         background-color: #66ccff;

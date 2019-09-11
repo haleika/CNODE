@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import "@/assets/reset.css"
+import "@/assets/markdown.css"
 import "@/assets/stylus/iconfont.css"
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'

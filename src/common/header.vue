@@ -2,11 +2,15 @@
   <div class="header">
     <header>
         <div class="header_box">
-            <div class="header_logo">
+            <router-link tag="div" to="/" class="header_logo">
                 <img src="../assets/imgs/cnodejs-logo.svg" alt="">
-            </div>
+            </router-link>
             <div class="header_link">
-                <a class="cnode-link" href="https://cnodejs.org">CNode社区官方版入口←</a>
+                <ul class="cnode-link">
+                    <li><a href="https://cnodejs.org/">社区入口</a></li>
+                    <li><a href="https://cnodejs.org/api">API</a></li>
+                    <li><a href="https://cnodejs.org/about">关于</a></li>
+                </ul>
                 <button
                     class="iconfont nav-icon"
                     :class="isShow?'icon-cuo':'icon-quanbu'"
@@ -89,9 +93,12 @@ export default {
                     width: 100%;
                     height: 100%;
                 }
+                :hover{
+                    cursor: pointer;
+                }
             }
             .cnode-link{
-                display: block;
+                display: flex;
                 width: auto;
                 height: 60px;
                 line-height: 60px;
@@ -100,7 +107,10 @@ export default {
                 font-weight: bold;
                 margin-right: 5px;
                 transition: all 1s;
-                &:hover{
+                li{
+                    margin-left: 10px;
+                }
+                li:hover{
                     text-decoration: underline
                 }
             }
