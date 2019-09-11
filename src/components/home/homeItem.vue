@@ -17,7 +17,7 @@
                     <span v-else class="other">{{tag[item.tab]}}</span>
                 </div>
                 <div class="title">
-                    {{item.title|titleFilter}}
+                    {{item.title|titleFilter(isMobile)}}
                 </div>
              </div>
              <div class="right">
@@ -46,18 +46,19 @@ export default {
         let myData = new Date(data);
         return myData.getFullYear()+"年"+(myData.getMonth()+1)+"月";
       },
-      titleFilter(title){
+      titleFilter(title,isMobile){
           let len = title.length;
-          if(len>20){
-              return title.slice(0,20)+"..."
+          if(len>10&&isMobile){
+              return title.slice(0,16)+"..."
           }else{
-              return title;
+              return title.slice(0,40)+"..."
           }
       }
   },
   data(){
       return{
-          tag: this.$store.state.tag
+          tag: this.$store.state.tag,
+          isMobile:this.$store.state.isMobile
       }
   },
   methods:{

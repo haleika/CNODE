@@ -1,7 +1,7 @@
 <template>
   <div class="pageButton">
       <ul>
-          <li @click="prve(1)">上一页</li>
+          <li @click="prve(1)" class="iconfont">&#xe609;</li>
           <li
             v-for="(item,index) in list"
             :key="index"
@@ -10,7 +10,7 @@
           >
               {{item}}
           </li>
-          <li @click="next(1)">下一页</li>
+          <li @click="next(1)" class="iconfont">&#xe608;</li>
       </ul>
   </div>
 </template>
